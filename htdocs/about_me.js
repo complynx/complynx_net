@@ -1,4 +1,4 @@
-import { async_sleep } from "./kmodules/promised_event_target.js";
+import { async_sleep, promiseEvent } from "./kmodules/promised_event_target.js";
 
 /**
  * @param {string} el 
@@ -103,6 +103,50 @@ async function about_me(){
     </div>
     <div class="joke">&nbsp;</div>
     `;
+
+    let ws;
+    async function getJoke() {
+        if(ws && ws.receivingJoke) return;
+        el = $(".joke")[0];
+        el.innerText="█";
+        function finishedJoke(){
+            if(!ws.receivingJoke) return;
+            ws.receivingJoke = false;
+            el.innerText = el.innerText.substring(0, el.innerText.length-1);
+        }
+        function ws_message(ev) {
+            let msg = JSON.parse(ev.data);
+            if(msg.chunk) {
+                el.innerText = el.innerText.substring(0, el.innerText.length-1) + msg.chunk + "█";
+            }
+            if(msg.finished) {
+                finishedJoke();
+            }
+        }
+        function ws_close(ev) {
+            finishedJoke();
+            ws = null;
+        }
+        if(!ws) {
+            let loc = window.location, ws_uri;
+            if (loc.protocol === "https:") {
+                ws_uri = "wss:";
+            } else {
+                ws_uri = "ws:";
+            }
+            ws_uri += "//" + loc.host;
+            ws_uri += "/abouter/ws";
+
+            ws = new WebSocket(ws_uri);
+            
+            ws.addEventListener("message", ws_message);
+            ws.addEventListener("close",ws_close);
+            ws.addEventListener("error",ws_close);
+            await promiseEvent(ws, "open");
+        }
+        ws.receivingJoke = true;
+        ws.send("get");
+    }
     {
         let fills = [];
         function recursiveCollectFills(element) {
@@ -139,6 +183,8 @@ async function about_me(){
                     if(fills[0]) fills[0].node.textContent += "█";
                 }
                 setTimeout(fillTheFillsBack, delay);
+            } else {
+                getJoke();
             }
         }
         fillTheFillsBack();
