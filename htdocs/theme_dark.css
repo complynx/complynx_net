@@ -1,0 +1,14 @@
+:root {
+  --green:120;
+  --yellow:60;
+  --teal:200;
+  --blue:230;
+  --red:311;
+  --orange:30;
+  --main-color-saturation: 40%;
+  --main-color-lumi: 50%;
+  --terminal-grey: hsl(220,10%,var(--main-color-lumi));
+  --terminal-grey-dark: hsl(220,10%,25%);
+  --terminal-teal: hsl(var(--teal),calc(var(--main-color-saturation) * 1.5),var(--main-color-lumi));
+  --terminal-green: hsl(var(--green),var(--main-color-saturation),var(--main-color-lumi));
+}

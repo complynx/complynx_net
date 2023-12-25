@@ -1,0 +1,527 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<script type="text/javascript" src="./szondy.db.js"></script>
+	<script type="text/javascript" src="./szondy.js"></script>
+	<style type="text/css">
+		.qualities{
+			width: auto;
+			margin: auto;
+		}
+		.qualities td,.qualities th{
+			padding: 0px;
+			min-width: 1.3em;
+			border-radius: 0px;
+		}
+		.qualities th,.qualities .q-name{
+			text-align: center;
+		}
+		.qualities .q-name{
+			min-width: 1.5em;
+			font-weight: bold;
+			border-right: 1px solid #d0d0d0;
+		}
+		.qualities tbody td.q-1,
+		.qualities tbody td.q-2,
+		.qualities tbody td.q-4,
+		.qualities tbody td.q-5{
+			background-color: #ffebee;
+		}
+		.qualities tbody .qs1 td.q-1,
+		.qualities tbody .qs1 td.q-2,
+		.qualities tbody .qs2 td.q-2,
+		.qualities tbody td.q-3,
+		.qualities tbody .qs4 td.q-4,
+		.qualities tbody .qs5 td.q-4,
+		.qualities tbody .qs5 td.q-5{
+			background-color: #f44336;
+		}
+		.side-nav a{
+			overflow-y: hidden;
+		}
+
+
+		.side-nav .active{
+			display: none;
+		}
+body {
+	margin: 4em 0 0 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: #555;
+}
+a:hover{
+  color: #f44336;
+}
+
+
+section {
+  width: 700px;
+  margin: 0 auto;
+  margin-bottom: 5em;
+}
+section.t-test-main {
+  max-width: 400px;
+  font-size: 1.5em;
+}
+#img1{
+  width:200px;
+}
+
+.progress {
+  background: #ffebee;
+  margin-bottom: 1em;
+}
+.progress div{
+  background: #f44336;
+}
+
+.card {
+  box-sizing: border-box;
+	border-radius: .3em;
+  box-shadow: 0px 5px 10px 0px #aaa;
+	width: 100%;
+	margin: 1em auto;
+	background-color: #ddd;
+}
+.card .card-content{
+	padding: 0;
+  box-sizing: border-box;
+}
+.card .card-content p {
+  margin: .5em 1em;
+}
+.card .card-content p:first-child {
+  padding-top: .7em;
+}
+.card .card-content:last-child {
+  padding-bottom: .3em;
+}
+.card .card-content .card-title {
+  display: block;
+  box-sizing: border-box;
+  padding: .1em 1em;
+  width: 100%;
+	border-top-left-radius: .3em;
+	border-top-right-radius: .3em;
+  font-size: 1.2em;
+  background-color: #eee;
+}
+.card .card-action a {
+  display: inline-block;
+	padding: .2em 1em;
+}
+
+		
+nav input[type="checkbox"],
+nav .hamburger-lines {
+  display: none;
+}
+
+nav {
+  box-shadow: 0px 5px 10px 0px #aaa;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  height: 3em;
+  z-index: 12;
+  top: 0;
+  left:0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 3em;
+  align-items: center;
+  padding: 0 2em;
+}
+
+.menu-items {
+  order: 2;
+  display: flex;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: #f44336;
+  transition: color 0.3s ease-in-out;
+}
+
+.logo {
+  order: 1;
+  font-size: 2.3rem;
+}
+
+
+@media (max-width: 768px) {
+  nav {
+    opacity: 0.95;
+  }
+  .modal .content{
+    width: 70%;
+  }
+  
+  section {
+    width: 90%;
+  }
+
+  .navbar-container input[type="checkbox"],
+  .navbar-container .hamburger-lines {
+    display: block;
+  }
+
+  .navbar-container {
+	display: block;
+	position: absolute;
+	height: 3em;
+	width: 100%;
+	padding: 0;
+  }
+
+  .navbar-container input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 30px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+  }
+
+  .navbar-container .hamburger-lines {
+    display: block;
+	height: 24px;
+	width: 35px;
+	position: absolute;
+	top: 12px;
+	left: 23px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  }
+
+  .navbar-container .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #333;
+  }
+
+  .navbar-container .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  nav .menu-items {
+    padding-top: 4em;
+	background: #fff;
+	height: 100vh;
+	max-width: 10em;
+	transform: translate(-150%);
+	display: flex;
+	flex-direction: column;
+	margin-left: -2em;
+	padding-left: 3em;
+	transition: transform 0.5s ease-in-out;
+	box-shadow: 5px 0px 10px 0px #aaa;
+	margin-top: 0;
+  }
+
+  nav .menu-items li {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .logo {
+	position: absolute;
+	top: .2em;
+	right: 15px;
+	font-size: 2rem;
+	margin: 0;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+    transform: rotate(35deg);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-35deg);
+  }
+}
+	</style>
+	<script>
+		mute_hash_checker=false;
+
+		function closeAll() {
+			document.querySelectorAll("section").forEach(s=>s.style.display="none");
+			document.querySelectorAll("ul li").forEach(s=>s.classList.remove("active"));
+		}
+		function openTSmth(smth){
+			closeAll();
+			document.querySelector("section.t-"+smth).style.display="";
+			document.querySelector("ul li.t-"+smth)?.classList.add("active");
+		}
+		function switchToT(smth){
+			document.querySelectorAll("section").forEach(s=>s.style.display="none");
+			document.querySelector("section.t-"+smth).style.display="";
+		}
+		function openProfile() {
+			openTSmth("profile");
+			document.querySelector("#profile").value='';
+		}
+		function openInfo() {
+			openTSmth("info");
+		}
+		function openTest(){
+			openTSmth("test");
+		}
+		function startTest(){
+			Szondy.startTest();
+			switchToT("test-main");
+		}
+		function getHash(){
+			if(mute_hash_checker) return 1;
+			h=location.hash.substr(1);
+			if(h.indexOf("info")>=0) return openInfo();
+			if(h.indexOf("test")>=0) return openTest();
+			if((p=h.match(/profile=([0-9]*)/i))){
+				return convertFrom(p[1]);
+			}
+			if(h.indexOf("profile")>=0) return openProfile();
+		}
+
+		function shift(x){
+			Szondy.shift(x);
+			document.getElementById('testprogress').style.width = (Szondy.getProgress()*100)+"%";
+		}
+		function answer(a){
+			Szondy.answer(a);
+			document.getElementById('testprogress').style.width = (Szondy.getProgress()*100)+"%";
+			if(Szondy.getProgress()==1)
+				makeProfile();
+		}
+		function makeProfileStr(){
+			str='';
+			for(var i=0;i<Szondy.db.KettelDescrete.length;++i){
+				str += (Szondy.db.KettelDescrete[i]+3);
+			}
+			return str;
+		}
+		
+		function isNumeric(value) {
+			return !isNaN(parseFloat(value)) && isFinite(value);
+		}
+		function parseProfileStr(str){
+			if(!str)
+				str = document.getElementById("profile").value;
+			var i;
+			str=str.trim().split("").filter(function(x){return isNumeric(x);});
+			Szondy.db.KettelDescrete=[];
+			for(i=0;i<str.length && i<4;++i){
+				Szondy.db.KettelDescrete[i] = (new Number(str[i])) - 3;
+			}
+			for(;i<4;++i){
+				Szondy.db.KettelDescrete[i] = 0;
+			}
+		}
+		function makeProfile(){
+			var db = Szondy.db, K=db.Kettel, KD=db.KettelDescrete, f=db.factors;
+			switchToT("profile-main");
+
+			mute_hash_checker = true;
+			location.hash = "#profile=" + makeProfileStr();
+			mute_hash_checker = false;
+
+			var result="<h3>По факторам:</h3>";
+
+			for(var i=0;i<KD.length;++i){
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.remove("qs1");
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.remove("qs2");
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.remove("qs3");
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.remove("qs4");
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.remove("qs5");
+				document.querySelector(".qualities .q-type-" + f[i].index).classList.add("qs"+(KD[i]+3));
+				var factor = '<b>'+f[i].index+' — «'+f[i].title+'»</b> У вас: '+KD[i];
+				factor+="<p><b>Описание:</b> "+f[i].about+"</p>";
+				factor+="<p><b>Ваша характеристика:</b></p><p>";
+				factor += f[i][''+KD[i]];
+				if(KD[i]>0) factor += '</p>'+f[i]['+']+'<p>';
+				if(KD[i]<0) factor += '</p>'+f[i]['-']+'<p>';
+				factor += '</p>';
+				result+=factor + '<br>';
+			}
+
+			function fn(num){
+				ret = '';
+				if(KD[i]==0) return '';
+				if(KD[i]>0) ret = 'F';
+				else ret = 'f';
+				return ret + (num+1);
+			}
+
+			result+="<h3>Комбинации:</h3>";
+			var C=db.combinations;
+
+			for(var i=0;i<3;++i){
+				for(var j=i+1;j<4;++j){
+					var ij = fn(i)+fn(j);
+					if(C[ij]){
+						var comb = "<p><b>"+ij+":</b> "+C[ij]+"</p>";
+						result+=comb;
+					}
+				}
+			}
+
+			document.getElementById("result").innerHTML = result;
+		}
+		function convertFrom(s){
+			parseProfileStr(s);
+			makeProfile();
+		}
+
+		function convertTo(){
+			switchToT('profile');
+			document.getElementById("profile").value = makeProfileStr();
+		}
+	</script>
+</head>
+<body onReady="b=document.body;">
+	<nav>
+	  <div class="navbar-container container">
+		  <input type="checkbox" name="" id="">
+		  <div class="hamburger-lines">
+			  <span class="line line1"></span>
+			  <span class="line line2"></span>
+			  <span class="line line3"></span>
+		  </div>
+		  <ul class="menu-items">
+			<li class="t-info active"><a href="#info">Описание</a></li>
+			<li class="t-test"><a href="#test">Пройти</a></li>
+			<li class="t-profile"><a href="#profile">Профайл</a></li>
+		  </ul>
+		  <h1 class="logo">Тест Сонди-Кеттела</h1>
+	  </div>
+	</nav>
+	<script type="text/javascript">
+	// $(".button-collapse").sideNav();
+	
+	setTimeout(()=>{
+		Szondy.GUI.setImgElement(document.getElementById("img1"));
+		openInfo();
+		window.addEventListener('hashchange', getHash);
+		getHash();
+	}, 1);
+	</script>
+	<section class="t-test-main">
+		<img id="img1"><br>
+		<a id="a1" href="#" onClick="answer(1);return false">Не нравится</a><br>
+		<a id="a1" href="#" onClick="answer(2);return false">Так себе</a><br>
+		<a id="a1" href="#" onClick="answer(3);return false">Более-менее</a><br>
+		<a id="a1" href="#" onClick="answer(4);return false">Нормально</a><br>
+		<a id="a1" href="#" onClick="answer(5);return false">Нравится</a>
+		<h4>Прогресс:</h4>
+		<div class="progress">
+			<div class="determinate" id='testprogress' style="width: 0%">&nbsp;</div>
+		</div>
+		<a id="a1" href="#" onClick="shift(-1);return false">Назад</a>
+	</section>
+	<section class="t-profile-main">
+		<h2>Профайл</h2>
+		<table class="qualities">
+			<thead>
+				<tr>
+					<th class="q-name"></th><th class="q-1">-2</th><th class="q-2">-1</th><th class="q-3">0</th><th class="q-4">1</th><th class="q-5">2</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="q-type-F1">
+					<td class="q-name">F1</td><td class="q-1"></td><td class="q-2"></td><td class="q-3"></td><td class="q-4"></td><td class="q-5"></td>
+				</tr>
+				<tr class="q-type-F2">
+					<td class="q-name">F2</td><td class="q-1"></td><td class="q-2"></td><td class="q-3"></td><td class="q-4"></td><td class="q-5"></td>
+				</tr>
+				<tr class="q-type-F3">
+					<td class="q-name">F3</td><td class="q-1"></td><td class="q-2"></td><td class="q-3"></td><td class="q-4"></td><td class="q-5"></td>
+				</tr>
+				<tr class="q-type-F4">
+					<td class="q-name">F4</td><td class="q-1"></td><td class="q-2"></td><td class="q-3"></td><td class="q-4"></td><td class="q-5"></td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="#" onClick="convertTo();return false">Получить шифр</a>
+		<h2>Расшифровка</h2>
+		<div id="result"></div>
+	</section>
+	<section class="t-info">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">Что это</span>
+				<p>Это тест, основанный на тесте Сонди, выводящий вторичные факторы Кеттела.</p>
+			</div>
+			<div class="card-action">
+				<a href="#test">Пройти</a>
+				<a href="#profile">Профайл</a>
+			</div>
+	    </div>
+	</section>
+	<section class="t-test">
+		<h3>Инструкция</h3>
+		<p>Вам будет представлена серия изображений людей. От вас требуется оценить каждого человека по пятибальной шкале, насколько он(а) вам нравится.</p>
+		<p>Оценивайте по первому впечатлению, не стоит долго думать над ответом.</p>
+		<p>Если что-либо не понятно, обратитесь за разъяснением к экспериментатору.</p>
+		<a href="#" onclick="startTest();return false">Начать тест</a>
+	</section>
+	<section class="t-profile">
+		<label for="profile">Шифр вашего профайла <input id="profile" type="text" class="validate" autofocus></label>
+		<a href="#" onclick="convertFrom();return false">Расшифровка</a>
+		<p>Если вы получили профиль не через нашу программу, то чтобы получить расшифровку, запишите профиль следующим образом:</p>
+		<ol>
+			<li>Возьмите факторы по порядку</li>
+			<li>Если факторы в единицах Кеттела, то поделите каждый пополам</li>
+			<li>Если факторы в единицах данного теста, прибавьте к каждому 3</li>
+			<li>Впишите полученные цифры</li>
+		</ol>
+	</section>
+
+</body>
+</html>

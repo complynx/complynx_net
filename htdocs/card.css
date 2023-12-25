@@ -1,0 +1,149 @@
+/* Global ------------------------------------------------------ */
+
+@font-face
+{
+  font-family: "Open Sans";
+  src: local('Open Sans Light'), local('OpenSans-Light'), 
+    url('res/OpenSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+/*card*/
+.card{
+  width:30em;
+  height:18em;
+  top:50%;
+  box-sizing: border-box;
+  font-size:1rem;
+  color:#666670;
+  font-weight: 300;
+  font-family:'Open Sans','Exo 2','Century Gothic',CentGothic, sans-serif;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  transform-style: preserve-3d;
+  perspective: 37.5em;
+  transition: 0.5s;
+  position:fixed;
+  text-align:left;
+  justify-content: center;
+  align-items: center;
+  z-index: 600;
+  border-radius:0.3em;
+}
+.card *{
+  box-sizing: border-box;
+}
+.card.hidden{
+  transform:translate(-50%, -200vh);
+}
+.card .front,
+.card .back{
+  background:rgb(220,220,230);
+  background: -moz-linear-gradient(top, rgb(240,240,245), rgb(200,200,210));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(240,240,245)), color-stop(100%,rgb(200,200,210)));
+  background: -webkit-linear-gradient(top, rgb(240,240,245), rgb(200,200,210));
+  background: -o-linear-gradient(top, rgb(240,240,245), rgb(200,200,210));
+  background: -ms-linear-gradient(top, rgb(240,240,245), rgb(200,200,210));
+  background:linear-gradient(0deg,rgb(200,200,210), rgb(240,240,245));
+  box-shadow:0em 0em 0.3em -0.1em #333;
+  border-radius:0.3em;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  backface-visibility: hidden;
+  transition: 0.5s;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.card .front{
+  transform: rotateX(0deg);
+}
+.card .back{
+  transform: rotateX(180deg);
+}
+.card:hover .front{
+  transform: rotateX(-180deg);
+}
+.card:hover .back{
+  transform: rotateX(0deg);
+}
+
+.card .logowrap{
+  height:70%;
+  position:relative;
+  top:15%;
+  width:9.2em;
+  float:left;
+  border-right: 0.1em solid #aac;
+}
+.card .lynxSvg{
+  position:absolute;
+  width: 10em;
+  left:.5em;
+  height: 10em;
+  top: -2em;
+}
+.card .lynx{
+  fill:#666670;
+}
+
+
+.card .name,.card .phone{
+  float:left;
+}
+.card .name{
+  font-size:2em;
+  margin-top:2em;
+  margin-left:1.1em;
+  margin-right:1.1em;
+}
+.card .phone{
+  margin-top:.5em;
+  margin-left:2.2em;
+  margin-right:5em;
+  font-size:1em;
+}
+.card .findmewrap{
+  margin-top:3em;
+  float:left;
+  margin-left:2.2em;
+}
+.card .communications{
+  padding:0;
+  margin:0;
+}
+.card .communications a{
+  color:#aaaac0;
+  text-decoration:none;
+  font-size: 1.2em;
+  width:1.3em;
+  text-align: center;
+  display: inline-block;
+  font-family:fontello;
+  -webkit-transition:all .2s linear;
+  -moz-transition:all .2s linear;
+  -ms-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear;
+}
+.card .communications a:hover{
+  color:#778;
+  text-shadow:0em 0em 0.2em #3ff;
+  -webkit-transition:all .2s linear;
+     -moz-transition:all .2s linear;
+      -ms-transition:all .2s linear;
+       -o-transition:all .2s linear;
+          transition:all .2s linear;
+}
+
+
+
+
+
+
+

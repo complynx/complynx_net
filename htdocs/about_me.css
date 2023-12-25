@@ -1,0 +1,196 @@
+.logowrap {
+  width: 130%;
+  margin-left: .4em;
+  path {
+    fill:var(--terminal-green);
+  }
+}
+.contents {
+  line-height: 1.3em;
+  filter: url(#cmd-glitch);
+}
+.contacts .icon {
+  font-family: fontello;
+  display: inline-block;
+  font-size: 0.5em;
+  width: 1.2em;
+  height: 0.8em;
+  transform: translateY(-0.4em);
+  font-weight: 100;
+  text-align: center;
+  color: hsl(var(--blue),calc(var(--main-color-saturation) * 1.5),calc(var(--main-color-lumi) * 1.3));
+}
+.contacts a:before{
+  content: "    ";
+}
+.contacts .username:before{
+  content: " ";
+}
+.contacts a{
+  display: block;
+  text-decoration: none;
+  font-weight: 100;
+  color: var(--terminal-grey-dark);
+}
+.contacts .site:before{
+  content: "`";
+  color: var(--terminal-grey-dark);
+}
+.contacts .site:after{
+  content: "`";
+  color: var(--terminal-grey-dark);
+}
+.contacts .site:empty:before,
+.contacts .site:empty:after{
+  content: "";
+}
+.contacts .site {
+  color: hsl(var(--yellow),calc(var(--main-color-saturation) * 1),calc(var(--main-color-lumi) * 1.3));
+}
+.contacts .username {
+  color: hsl(var(--blue),calc(var(--main-color-saturation) * 1.5),calc(var(--main-color-lumi) * 1.3));
+}
+.contacts a:hover .username {
+  text-decoration: underline;
+  color: hsl(var(--teal),calc(var(--main-color-saturation) * 2.1),calc(var(--main-color-lumi) * 1.3));
+}
+.about .ascii-name .name {
+  margin-left: calc(10.85em / 18 *4);
+}
+.about .ascii-name .sname {
+  margin-left: calc(10.85em / 18 * 2);
+}
+.about .ascii-name .sname{
+  padding-bottom: 1.39em;
+}
+.brace{
+  color:var(--terminal-grey);
+}
+.job-name {
+  color: var(--terminal-grey);
+}
+.job-name .additional {
+  color: hsl(var(--yellow),calc(var(--main-color-saturation) * 1),calc(var(--main-color-lumi) * 1.3));
+}
+.job-name .main,
+.contacts .title {
+  color: hsl(var(--green),calc(var(--main-color-saturation)),calc(var(--main-color-lumi)));
+}
+.contents {
+  display: grid;
+  grid-template-columns: 3.5em 55% auto;
+  width: 100vw;
+  height: 100vh;
+  column-gap: calc(10.85em / 18);
+}
+.about, .joke {
+  padding: 1em;
+}
+.about {
+/*   margin-left: calc(10.85em / 18 * 2);
+  margin-right: calc(10.85em / 18 * 2); */
+  padding-top: 1em;
+  background: var(--terminal-bg);
+}
+.joke {
+/*   margin-left: calc(10.85em / 18 * 2);
+  margin-right: calc(10.85em / 18 * 2); */
+  padding-top: 3.7em;
+  background: var(--terminal-bg);
+}
+
+
+.theme-toggler span{
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+  color: var(--terminal-green);
+}
+.theme-toggler.dark .light,
+.theme-toggler.light .dark {
+  color: hsl(var(--blue),calc(var(--main-color-saturation) * 1.5),calc(var(--main-color-lumi) * 1.3));
+}
+
+
+@media screen and (min-width: 721px) {
+  .joke {
+    overflow-y: auto;
+  }
+}
+
+
+
+@media screen and (max-width: 720px) {
+  .contents {
+    grid-template-columns: 3.5em auto;
+    grid-template-rows: 30em auto;
+    overflow-y: auto;
+  }
+  .about {
+    padding-top: 1em;
+  }
+  .joke {
+    grid-area: 2 / 2 / 2 / 2;
+    padding-top: 0;
+  }
+}
+@media screen and (min-width: 720px) and (max-height: 480px) {
+  .contents{
+    line-height: inherit;
+  }
+  .about .ascii-name {
+    font-size: 0.5em;
+  }
+  .about {
+    padding-top: 0;
+  }
+  .about .ascii-name div{
+    display: inline-block;
+  }
+  .joke {
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .contents {
+    grid-template-columns: auto;
+    grid-template-rows: 4em 30em auto;
+  }
+  .about {
+    padding-top: 0;
+  }
+  .instruments{
+    grid-area: 1 / 1 / 1 / 1;
+    display: flex;
+    justify-content: space-between;
+  }
+  .logowrap{
+    width: 4em;
+    transform: translate(1em, -0.3em);
+  }
+  .theme-toggler{
+    margin-right: 1.3em;
+    margin-top: 0.6em;
+  }
+  .about{
+    grid-area: 2 / 1 / 2 / 1;
+  }
+  .joke {
+    grid-area: 3 / 1 / 3 / 1;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .contents{
+    line-height: inherit;
+  }
+  .about .ascii-name {
+    font-size: 0.5em;
+    text-align:center;
+  }
+  .contacts a:before{
+    content: " ";
+  }
+}

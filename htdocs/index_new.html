@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My personal website page">
+    <meta name="keywords" content="complynx, Drizhuk, Daniel Drizhuk, personal, developer, golang, go, python, html">
+    <meta name="author" content="Daniel Drizhuk">
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+    <link rel='stylesheet' href='/res/fontello/css/fontello.css'>
+    <link rel='stylesheet' href='/about_me.css'>
+    <style class="dark" media="(prefers-color-scheme: dark) or (prefers-color-scheme: no-preference)">
+      :root {
+          --bg-base-color:#000;
+          --bg-middle-color: #c154ff2e;
+          --bg-tl-color: #3800ff1a;
+          --bg-tr-color: #b533ff24;
+          --bg-bl-color: #ff4f910f;
+          --bg-br-color: #bc3cf70a;
+          --terminal-bg: #ffffff08;
+          --terminal-green: #74ff74a3;
+        }
+    </style>
+    <style class="light" media="(prefers-color-scheme: light)">
+      :root {
+        --bg-base-color:#ffffff;
+        --bg-middle-color: #c154ff2e;
+        --bg-tl-color: #3800ff1a;
+        --bg-tr-color: #b533ff24;
+        --bg-bl-color: #ff4f910f;
+        --bg-br-color: #bc3cf70a;
+        --terminal-bg: #0000000a;
+        --terminal-green: #0a0;
+      }
+    </style>
+    <link rel='stylesheet' class="light" media="(prefers-color-scheme: light)" href='/theme_light.css'>
+    <link rel='stylesheet' class="dark" media="(prefers-color-scheme: dark) or (prefers-color-scheme: no-preference)" href='/theme_dark.css'>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script type="module" src="./kernel.js" defer async></script>
+    <script type="module" src="./about_me.js" defer async></script>
+
+    <title>Complynx — Daniel Drizhuk</title>
+    <meta charset="UTF-8"/>
+    <style>
+      html {
+        height: 100%;
+        background: var(--bg-base-color);
+      }
+      body {
+        margin: 0;
+        font-family: 'Hack', monospace;
+        color: var(--terminal-green);
+      }
+      body>.bg{
+        position: fixed;
+        pointer-events: none;
+        z-index: -1;
+        width: 140%;
+        height: 140%;
+        left: -20%;
+        top: -20%;
+        background: 
+          radial-gradient(circle at 0% 0%, var(--bg-tl-color), #0000 50%),
+          radial-gradient(circle at 0% 100%, var(--bg-bl-color), #0000 50%), 
+          radial-gradient(circle at 100% 0%, var(--bg-tr-color), #0000 50%), 
+          radial-gradient(circle at 100% 100%, var(--bg-br-color), #0000 50%), 
+          radial-gradient(circle at 50% 85%, var(--bg-middle-color), #0000 50%) ;
+        filter: url(#speckle-blur);
+        opacity: 1;
+        animation: fadeIn 2s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .initterm{
+        position: relative;
+        margin: 10% auto;
+        width: 20em;
+        height: 3em;
+        background: var(--terminal-bg);
+        padding: 0.5em;
+      }
+      .initterm .cursor {
+        opacity: 0;
+        animation: blink 1.5s infinite ease;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        49.999%{
+          opacity: 0;
+        }
+        50%{
+          opacity: 1;
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+    </style>
+    <script type="module">
+      function selectTheme(){
+        let setMediaAll=(sel, media)=>{
+          for(let el of document.querySelectorAll(sel)) {
+            el.media = media;
+          }
+        };
+        if(localStorage["theme"]){
+          if(localStorage["theme"]=="light") {
+            setMediaAll("style.dark,link.dark[rel=stylesheet]", "none");
+            setMediaAll("style.light,link.light[rel=stylesheet]", "all");
+          } else {
+            setMediaAll("style.dark,link.dark[rel=stylesheet]", "all");
+            setMediaAll("style.light,link.light[rel=stylesheet]", "none");
+          }
+        }
+      }
+      selectTheme();
+      function toggleTheme(){
+        if(!localStorage["theme"]){
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            localStorage["theme"] = "light";
+          }
+        }
+        if(localStorage["theme"] == "light"){
+          localStorage["theme"] = "dark";
+        }else{
+          localStorage["theme"] = "light";
+        }
+        selectTheme();
+      }
+      window.toggleTheme = toggleTheme;
+      
+      function spinnerSpin() {
+        let spinner = document.querySelector(".initterm>.spinner");
+        if(spinner) {
+          switch(spinner.innerText) {
+            case "-":
+              spinner.innerText = "/";
+              break;
+            case "/":
+              spinner.innerText = "|";
+              break;
+            case "|":
+              spinner.innerText = "\\";
+              break;
+            default:
+              spinner.innerText = "-";
+              break;
+          }
+          let time = Math.random();
+          time = (time*time*time) * 700 + 100;
+          setTimeout(spinnerSpin, time);
+        }
+      }
+      setTimeout(spinnerSpin, 100);
+    </script>
+    <svg style="position: fixed; width: 1px; height: 1px; left: -2px; top: -2px;">
+      <defs>
+        <filter id="speckle-blur">
+           <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.5"
+              numOctaves="2"
+              seed="201"
+              result="result1"
+              in="SourceGraphic" />
+           <feDisplacementMap
+              in2="result1"
+              xChannelSelector="B"
+              yChannelSelector="G"
+              in="SourceGraphic"
+              scale="200" />
+         </filter>
+       </defs>
+    </svg>
+  </head>
+  <body>
+    <div class="bg">&nbsp;</div>
+    <div class="initterm">guest@complynx.net:~ $ init<br><span class="spinner"></span><span class="cursor">█</span></div>
+
+  </body>
+</html>
