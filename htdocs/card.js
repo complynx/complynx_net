@@ -13,8 +13,8 @@ version="1.1" class="lynxSvg" viewBox="0 0 150 150">
                     <div class="findmewrap">
                         <span class="findmeon" lang="en">Find me on:</span>
                         <p class="communications">
-                            <a href="https://fb.me/complynx" target="_blank">&#xf230;</a>
-                            <a href="https://www.instagram.com/complynx/" target="_blank">&#xF16D;</a>
+                            <a href="https://fb.me/dj.touchzouk" target="_blank">&#xf230;</a>
+                            <a href="https://www.instagram.com/dj.touchzouk" target="_blank">&#xF16D;</a>
                             <a href="https://t.me/complynx" target="_blank">&#xF2C6;</a>
                             <a href="skype:complynx.ru?call" target="_blank">&#xe800;</a>
                             <a href="https://www.linkedin.com/in/complynx" target="_blank">&#xf30c;</a>
@@ -27,8 +27,8 @@ version="1.1" class="lynxSvg" viewBox="0 0 150 150">
                     <div class="findmewrap">
                         <span class="findmeon" lang="en">Find me on:</span>
                         <p class="communications">
-                            <a href="https://fb.me/complynx" title="Facebook: complynx" target="_blank">&#xf230;</a>
-                            <a href="https://www.instagram.com/complynx/" title="Instagram: @complynx" target="_blank">&#xF16D;</a>
+                            <a href="https://fb.me/dj.touchzouk" title="Facebook: dj.touchzouk" target="_blank">&#xf230;</a>
+                            <a href="https://www.instagram.com/dj.touchzouk" title="Instagram: @dj.touchzouk" target="_blank">&#xF16D;</a>
                             <a href="https://t.me/complynx" title="Telegram: @complynx" target="_blank">&#xF2C6;</a>
                             <a href="skype:complynx.ru?call" title="Skype: complynx.ru" target="_blank">&#xe800;</a>
                             <a href="mailto:d.drizhuk@gmail.com" title="E-mail" target="_blank">&#xe801;</a>
